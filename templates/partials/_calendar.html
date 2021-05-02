@@ -1,0 +1,250 @@
+<div class="page-content">
+  <div class="page-title">
+    <div class="row justify-content-between align-items-center">
+      <div class="col d-flex align-items-center">
+        <a
+          href="#"
+          class="text-white pr-3"
+          data-toggle="tooltip"
+          data-placement="left"
+          data-original-title="Go back"
+          ><i class="fas fa-angle-left"></i
+        ></a>
+        <h5
+          class="fullcalendar-title h4 d-inline-block font-weight-400 mb-0 text-white"
+        >
+          Calendar
+        </h5>
+      </div>
+      <div class="col-lg-6 mt-3 mt-lg-0 text-lg-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a href="#" class="fullcalendar-btn-prev btn btn-sm btn-neutral">
+            <i class="fas fa-angle-left"></i>
+          </a>
+          <a href="#" class="fullcalendar-btn-next btn btn-sm btn-neutral">
+            <i class="fas fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a href="#" class="btn btn-sm btn-neutral" data-calendar-view="month"
+            >Month</a
+          >
+          <a
+            href="#"
+            class="btn btn-sm btn-neutral"
+            data-calendar-view="basicWeek"
+            >Week</a
+          >
+          <a
+            href="#"
+            class="btn btn-sm btn-neutral"
+            data-calendar-view="basicDay"
+            >Day</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <!-- Fullcalendar -->
+      <div class="card overflow-hidden">
+        <div class="calendar" data-toggle="calendar" id="calendar"></div>
+      </div>
+      <!-- Modal - Add new event -->
+      <!--* Modal header *-->
+      <div
+        class="modal fade custom_cl"
+        id="new-event"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form class="new-event--form" >
+              
+           
+                <div class="form-group">
+                  <label class="form-control-label">Event title</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-alternative new-event--title"
+                    placeholder="Event Title" name="name" id="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">MealPosition:</label>
+                  <select name="mealPosition" class="form-control" id="exampleFormControlSelect1">
+                  <option value="BREAKFAST">BREAKFAST</option>
+                  <option value="MORNING_SNACK">MORNING SNACK</option>
+                  <option value="LUNCH">LUNCH</option>
+                  <option value="AFTERNOON_SNACK">AFTERNOON SNACK</option>
+                  <option value="DINNER">DINNER</option>
+                  <option value="EVENING_SNACK">EVENING SNACK</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">MealChosen:</label>
+                  <select name="mealChosen" class="form-control" id="exampleFormControlSelect1">
+                   {% for list in meal_list %}
+                    <option>{{ list.title }}</option>
+                   {% endfor %}
+                  </select>
+                </div>
+
+                
+
+                {% comment %} <div class="form-group mb-0">
+                  <label class="form-control-label d-block mb-3"
+                    >Status color</label
+                  >
+                  <div
+                    class="btn-group btn-group-toggle btn-group-colors event-tag"
+                    data-toggle="buttons"
+                  >
+                    <label class="btn bg-info active"
+                      ><input
+                        type="radio"
+                        name="event-tag"
+                        value="bg-info"
+                        checked
+                    /></label>
+                    <label class="btn bg-warning"
+                      ><input type="radio" name="event-tag" value="bg-warning"
+                    /></label>
+                    <label class="btn bg-danger"
+                      ><input type="radio" name="event-tag" value="bg-danger"
+                    /></label>
+                    <label class="btn bg-success"
+                      ><input type="radio" name="event-tag" value="bg-success"
+                    /></label>
+                    <label class="btn bg-secondary"
+                      ><input type="radio" name="event-tag" value="bg-default"
+                    /></label>
+                    <label class="btn bg-primary"
+                      ><input type="radio" name="event-tag" value="bg-primary"
+                    /></label>
+                  </div>
+                </div> {% endcomment %}
+                 <!-- Date -->
+                <input type="hidden" class="new-event--start" />
+            <input type="hidden"  class="new-event--end" />
+            <!-- Date -->
+              </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-sm btn-link"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-primary rounded-pill float-right new-event--add"
+              >
+                Create event
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal - Edit event -->
+      <div
+        class="modal fade"
+        id="edit-event"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form class="edit-event--form">
+                <div class="form-group">
+                  <label class="form-control-label">Event title</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-alternative edit-event--title"
+                    placeholder="Event Title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label d-block mb-3"
+                    >Status color</label
+                  >
+                  <div
+                    class="btn-group btn-group-toggle btn-group-colors event-tag mb-0"
+                    data-toggle="buttons"
+                  >
+                    <label class="btn bg-info active"
+                      ><input
+                        type="radio"
+                        name="event-tag"
+                        value="bg-info"
+                        checked
+                    /></label>
+                    <label class="btn bg-warning"
+                      ><input type="radio" name="event-tag" value="bg-warning"
+                    /></label>
+                    <label class="btn bg-danger"
+                      ><input type="radio" name="event-tag" value="bg-danger"
+                    /></label>
+                    <label class="btn bg-success"
+                      ><input type="radio" name="event-tag" value="bg-success"
+                    /></label>
+                    <label class="btn bg-secondary"
+                      ><input type="radio" name="event-tag" value="bg-default"
+                    /></label>
+                    <label class="btn bg-primary"
+                      ><input type="radio" name="event-tag" value="bg-primary"
+                    /></label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Description</label>
+                  <textarea
+                    class="form-control form-control-alternative edit-event--description textarea-autosize"
+                    placeholder="Event Desctiption"
+                  ></textarea>
+                  <i class="form-group--bar"></i>
+                </div>
+                <input type="hidden" class="edit-event--id" />
+              </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-sm btn-link"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-primary rounded-pill float-right"
+                data-calendar="update"
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-danger rounded-pill float-right"
+                data-calendar="delete"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

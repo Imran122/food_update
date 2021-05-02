@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Tomorrow's Meals</h5>
+        <span class="text-muted text-sm">Plan ahead if you need</span>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            {% for meal in secondDayMeals%}
+            <a href="/recipe/{{meal.mealChosen.id}}"  target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action active">
+            {{meal.mealPosition}}: {{meal.mealChosen.title}}
+            </a>
+            {%endfor%}
+          </ul>
+    </div>
+    <div class="card-footer text-center">
+        <a href="/mealplanview/" role="button" class="btn btn-soft-primary">
+           View All Planned Meals 
+        </a>
+        &nbsp;
+        <a href="/cal/calendar/" role="button" class="btn btn-soft-dark">
+            Edit Daily Schedule
+        </a>
+    </div>
+</div>

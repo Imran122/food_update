@@ -1,0 +1,29 @@
+<div class="card-wrapper p-3">
+    <div id="checklist" class="checklist" data-toggle="dragula">
+      {% if items.count > 0 %}
+      {% for item in items %}
+      <div id=card{{item.id}} class="card border draggable-item shadow-none">
+        <div class="px-3 py-2 row align-items-center">
+          <div class="col-10">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="del_{{item.id}}">
+              <label class="custom-control-label h6 text-sm" for="del_{{item.id}}">{{item.ingredient.description}} &nbsp;  <small>{{item.ingredient.recipe.title}}</small> </label>
+            </div>
+          </div>
+          <div class="col-auto card-meta d-inline-flex align-items-center ml-sm-auto">
+            <div class="dropdown" data-toggle="dropdown">
+              <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      Nothing found!
+      {% endif %}
+    </div>
+    
+  </div>

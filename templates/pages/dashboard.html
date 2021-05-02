@@ -1,0 +1,369 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="page-content">
+        <!-- Page title -->
+        <div class="page-title">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
+              <!-- Page title + Go Back button -->
+              <div class="d-inline-block">
+                <h5 class="h4 d-inline-block font-weight-400 mb-0 text-white">Hey there!</h5>
+              </div>
+              <!-- Additional info -->
+            </div>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class=" h6 mb-0">Today's Meals</h5>
+              </div>
+              <div class="card-body">
+                <div class="timeline timeline-one-side" data-timeline-content="axis" data-timeline-axis-style="dashed">
+                  <!--Add to here-->
+                  <div class="timeline-block">
+                    <span class="timeline-step badge-primary">
+                    </span>
+                    <div class="timeline-content">
+                      <small class="text-muted font-weight-bold">breakfast</small>
+                      <h5 class="h6 ">{{breakfast.mealChosen.title}}</h5>
+                    
+                        {% if breakfast.mealChosen.title %}
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".docs-example-modal-xl">Make It</button>
+                        {% else %}
+                        {% endif %}
+                        <div class="modal fade docs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                        
+                                <div class="modal-header">
+                                <h5 class="modal-title h6" id="myExtraLargeModalLabel">{{breakfast.mealChosen.title}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <div>
+                                    <b>Ingredients</b>
+                                    <ul class="list-group">
+                                        {% for ingredient in breakfastIngredients %}
+                                        <li class="list-group-iten">{{ingredient.description}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                &nbsp;
+                                <div>
+                                    <b>Directions</b><br>
+                                    <ul class="list-group">
+                                    {% for direction in breakfastDirections %}
+                                    <li class="list-group-iten"><b>{{ forloop.counter }}.</b> {{direction.description}}</li>
+                                    &nbsp;
+                                    {% endfor %}
+                            </ul>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+<!-- add morning snack here -->
+             <!--Add to here-->
+             <div class="timeline-block">
+                <span class="timeline-step badge-primary">
+                </span>
+                <div class="timeline-content">
+                  <small class="text-muted font-weight-bold">morning snack</small>
+                  <h5 class="h6 ">{{morningSnack.mealChosen.title}}</h5>
+                
+                    {% if morningSnack.mealChosen.title %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".morningsnack">Make It</button>
+                    {% else %}
+                    {% endif %}
+                    <div class="modal fade docs-example-modal-xl morningsnack" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                    
+                            <div class="modal-header">
+                            <h5 class="modal-title h6" id="morningsnackmyExtraLargeModalLabel">{{morningSnack.mealChosen.title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div>
+                                <b>Ingredients</b>
+                                <ul class="list-group">
+                                    {% for ingredient in morningSnackIngredients %}
+                                    <li class="list-group-iten">{{ingredient.description}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            &nbsp;
+                            <div>
+                                <b>Directions</b><br>
+                                <ul class="list-group">
+                                {% for direction in morningSnackDirections %}
+                                <li class="list-group-iten"><b>{{ forloop.counter }}.</b> {{direction.description}}</li>
+                                &nbsp;
+                                {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+<!-- add lunch here -->
+             <!--Add to here-->
+             <div class="timeline-block">
+                <span class="timeline-step badge-primary">
+                </span>
+                <div class="timeline-content">
+                  <small class="text-muted font-weight-bold">lunch </small>
+                  <h5 class="h6 ">{{lunch.mealChosen.title}}</h5>
+                
+                    {% if lunch.mealChosen.title %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".lunch">Make It</button>
+                    {% else %}
+                    {% endif %}
+                    <div class="modal fade docs-example-modal-xl lunch" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                    
+                            <div class="modal-header">
+                            <h5 class="modal-title h6" id="myExtraLargeModalLabel">{{lunch.mealChosen.title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div>
+                                <b>Ingredients</b>
+                                <ul class="list-group">
+                                    {% for ingredient in lunchIngredients %}
+                                    <li class="list-group-iten">{{ingredient.description}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            &nbsp;
+                            <div>
+                                <b>Directions</b><br>
+                                <ul class="list-group">
+                                {% for direction in lunchDirections %}
+                                <li class="list-group-iten"><b>{{ forloop.counter }}.</b> {{direction.description}}</li>
+                                &nbsp;
+                                {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+<!-- add afternoon snack here -->
+             <!--Add to here-->
+             <div class="timeline-block">
+                <span class="timeline-step badge-primary">
+                </span>
+                <div class="timeline-content">
+                  <small class="text-muted font-weight-bold">afternoon snack</small>
+                  <h5 class="h6 ">{{afternoonSnack.mealChosen.title}}</h5>
+                
+                    {% if afternoonSnack.mealChosen.title %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pmsnack">Make It</button>
+                    {% else %}
+                    {% endif %}
+                    <div class="modal fade docs-example-modal-xl pmsnack" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                    
+                            <div class="modal-header">
+                            <h5 class="modal-title h6" id="myExtraLargeModalLabel">{{afternoonSnack.mealChosen.title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div>
+                                <b>Ingredients</b>
+                                <ul class="list-group">
+                                    {% for ingredient in afternoonSnackIngredients %}
+                                    <li class="list-group-iten">{{ingredient.description}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            &nbsp;
+                            <div>
+                                <b>Directions</b><br>
+                                <ul class="list-group">
+                                {% for direction in afternoonSnackDirections %}
+                                <li class="list-group-iten"><b>{{ forloop.counter }}.</b> {{direction.description}}</li>
+                                &nbsp;
+                                {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+<!-- add dinner here -->
+             <!--Add to here-->
+             <div class="timeline-block">
+                <span class="timeline-step badge-primary">
+                </span>
+                <div class="timeline-content">
+                  <small class="text-muted font-weight-bold">dinner</small>
+                  <h5 class="h6 ">{{dinner.mealChosen.title}}</h5>
+                
+                    {% if dinner.mealChosen.title %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".dinner">Make It</button>
+                    {% else %}
+                    {% endif %}
+                    <div class="modal fade docs-example-modal-xl dinner" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                    
+                            <div class="modal-header">
+                            <h5 class="modal-title h6" id="myExtraLargeModalLabel">{{dinner.mealChosen.title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div>
+                                <b>Ingredients</b>
+                                <ul class="list-group">
+                                    {% for ingredient in dinnerIngredients %}
+                                    <li class="list-group-iten">{{ingredient.description}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            &nbsp;
+                            <div>
+                                <b>Directions</b><br>
+                                <ul class="list-group">
+                                {% for direction in dinnerDirections %}
+                                <li class="list-group-iten"><b>{{ forloop.counter }}.</b> {{direction.description}}</li>
+                                &nbsp;
+                                {% endfor %}
+                        </ul>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+<!-- end meals -->
+</div>
+</div>  
+</div>
+<div>
+  {%include 'partials/_dashboard_tomorrow.html' %}
+</div>            
+<div>
+  {% include 'partials/_favorites_widget.html'%}
+</div>
+      
+</div>   
+      
+        <div class="col-lg-6">
+          {% if feedbackEvent%}
+            <div class="card" id="feedbackcard">
+              <div class="card-header">
+                <h5 class=" h6 mb-0">Feedback Needed</h5>
+              </div>
+              <div class="card hover-shadow-lg hover-translate-y-n10">
+                <div class="card-header border-0 pb-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">{{feedbackEvent.start}}</h6>
+                    </div>
+                    
+                </div>
+            </div>
+            
+                <div class="card-body text-center" >
+                <img alt="{{feedbackEvent.recipe.title}}" style="border-radius: 15px;" src="{{feedbackEvent.recipe.image}}" class="img-fluid w-50 rounded">
+            
+            </a>
+                    <h5 class="h6 my-4"><a href="">{{feedbackEvent.recipe.title}}</a></h5>
+                    
+            
+            
+                    <span class="clearfix"></span>
+                    
+                </div>
+                <div class="card-footer text-center" id="feedbackbuttons">
+                    <button type="button" class="btn btn-soft-danger btn-sm feedback" data-eventid="{{feedbackEvent.id}}" data-feedback="NOT_INTERESTED">
+                        Nope!
+                    </button>
+                    <button type="button" class="btn btn-soft-warning btn-sm feedback" data-eventid="{{feedbackEvent.id}}" data-feedback="NONE">
+                        Didn't Make It
+                    </button>
+                    <button type="button" class="btn btn-soft-info btn-sm feedback" data-eventid="{{feedbackEvent.id}}" data-feedback="MADE_IT">
+                        It Was Okay
+                    </button>
+                    <button type="button" class="btn btn-soft-success btn-sm feedback" data-eventid="{{feedbackEvent.id}}" data-feedback="LOVED_IT">
+                        Loved It
+                    </button>
+                    
+                  </div>
+                
+              </div>
+             
+              </div>
+              {%endif%}
+              {% include 'partials/_generate_shopping_list.html' %}
+            </div>
+            
+          </div>
+          
+        </div>
+   
+
+    {%endblock%}
+
+    {%block js %}
+        <script>
+        $(document).ready(function(){
+          $('.feedback').click(function(){
+            feedbackid = $(this).data('eventid')
+            feedback = $(this).data('feedback')
+          
+            $.ajax({
+              type:'POST',
+              url:"{% url 'pages:feedback_meal' %}",
+              data:{
+                'interestId': feedbackid,
+                'feedback': feedback,
+              },
+              headers: {'X-CSRFToken': '{{ csrf_token }}'},
+              success: function(response){
+                
+                $('#feedbackcard ').load(location.href + ' #feedbackcard >*', '')
+                location.reload();
+              }
+            })
+          })
+        })
+      </script>
+    {%endblock%}

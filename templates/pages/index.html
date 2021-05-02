@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for dayNeed in dayNeeds %}
+    <h1> Day need {{ dayNeed.id }}</h1>
+    {% for option in optionBreakfasts %}
+    {% if option.dayNeeds.id == dayNeed.id %}
+    <h1>Breakfast </h1>
+    <div class="card">
+        <img class="card-img-top" src="{{ option.optionImage }}" alt="Card image cap" width="50" height="400">
+        <div class="card-body">
+            <h5 class="card-title">{{ option.optionTitle }}</h5>
+            <p class="card-text">Chosen = {{option.chosen}}</p>
+            <a id="chooserecipe" data-chooserecipeid="{{ option.id}}" class="btn btn-sm btn-primary"> Choose this one </a>
+        </div>
+    </div>
+    
+    {% else %}
+    <div></div>
+    {% endif %}
+    {% endfor %}
+
+    {% for option in optionLunchs %}
+    <h1>Lunch </h1>
+    <div class="card">
+        <img class="card-img-top" src="{{ option.optionImage }}" alt="Card image cap" width="50" height="400">
+        <div class="card-body">
+            <h5 class="card-title">{{ option.optionTitle }}</h5>
+            <p class="card-text">Chosen = {{option.chosen}}</p>
+            <a id="chooserecipe" data-chooserecipeid="{{ option.id}}" class="btn btn-sm btn-primary"> Choose this one </a>
+        </div>
+    </div>
+    {% endfor %}
+    
+{% endfor %}
+
+{% endblock %}
+
+{% block js %}
+<script>
+    $('#chooserecipe').click(function(){
+        alert('yo')
+        fid = $(this).data("chooserecipeid");
+        console.log('fid -> ' + fid)
+        $.ajax({
+          type: 'GET',
+          url: `{% url 'ajax_update_breakfast' %}`,
+          data: {
+            chooserecipeid: fid,
+          },
+          success: function(response) {
+            
+            /*$('#table ').load(location.href + ' #table>*', '');*/
+          },
+          error: function(response) {
+            /*alert('Error from Ajax');*/
+          }
+        })
+        /**
+        var eid;
+        eid = $(this).attr("data-engagmentid");
+        $.get('ajax/ajax_change_status', {enagement_id: eid}, function(data){
+          $('#refesh_engage').hide();
+          alert("did stuff");
+        })
+        */
+      });
+    
+</script>
+{% endblock %}
+

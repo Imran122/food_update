@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Add to Meal Plan</h5>
+        
+    </div>
+    <div class="card-body">
+        <form action="{% url 'recipe' recipe.id %}" method="POST">
+            {%csrf_token%}
+            <label for="date"> Date for?</label>
+            <input class="form-control" type="date" id="date" name="date"><br>
+
+            <label for="meal"> Select Meal </label><br> 
+            <select class="form-control" name="meal" id="meal">
+                <option value="BREAKFAST">Breakfast</option>
+                <option value="MORNING_SNACK">Morning Snack</option>
+                <option value="LUNCH">Lunch</option>
+                <option value="AFTERNOON_SNACK">Afternoon Snack</option>
+                <option value="DINNER">Dinner</option>
+                <option value="EVENING_SNACK">Late Snack</option>
+            </select> <br>
+            <input type="hidden" name="recipeId" id="recipeId" value="{{recipe.id}}">
+            <button class="btn btn-primary" id="submit" type="submit">Submit form</button>
+        </form>
+        
+    </div>
+    <div class="card-footer">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="h6 mb-0 avatar-content">You're using this in the next 14 days: </span>
+            </div>
+        </div>
+        <ul class="list-group">
+            {% for futureMeal in futureMeals%}
+            <li class="list-group-item">{{futureMeal.start}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="card-footer">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="h6 mb-0 avatar-content">You've used this in the last 14 days: </span>
+            </div>
+        </div>
+        <ul class="list-group">
+            {% for pastMeal in pastMeals%}
+            <li class="list-group-item">{{pastMeal.start}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>

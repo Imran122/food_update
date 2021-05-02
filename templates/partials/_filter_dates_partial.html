@@ -1,0 +1,13 @@
+
+      <form action="{% url 'pages:mealplanView' %}" method="POST">
+          {%csrf_token%}
+          <label for="date"> Beggining Date</label>
+          <input class="form-control" type="date" value="{{startdate| date:'Y-m-d'}}" id="date" name="date">
+          <label for="enddate"> End Date</label>
+          <input class="form-control" type="date" value="{{enddate| date:'Y-m-d'}}" id="enddate" name="enddate"><br>
+          
+      
+          <button class="btn btn-primary" id="submit" type="submit">Adjust Dates</button>
+      </form>
+     
+    

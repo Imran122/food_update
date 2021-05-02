@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-content">
+    <!-- Page title -->
+    <div class="page-title">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
+          <!-- Page title + Go Back button -->
+          <div class="d-inline-block">
+            <h5 class="h4 d-inline-block font-weight-400 mb-0 text-white">Recipes</h5>
+          </div>
+          <!-- Additional info -->
+          <div class="align-items-center ml-4 d-inline-flex">
+      
+          </div>
+          <!-- Optional link -->
+        
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
+          <!-- Filter input -->
+          <form class="bg-neutral rounded-pill d-inline-block" action="{% url 'recipe_search'%}" method="GET">
+            <div class="input-group input-group-sm input-group-merge input-group-flush">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-transparent"><i class="fas fa-filter"></i></span>
+              </div>
+              <input type="text" name="keywords" id="keywords" class="form-control form-control-flush" placeholder="Filter results">
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      {% for recipe in paged_recipes %}
+      <div class="col-lg-3 col-sm-6">
+        <div class="card card-product" style="height: 300px; vertical-align:middle">
+          <div class="card-header border-0">
+            <h2 class="h6">
+              <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+            </h2>
+          </div>
+          <!-- Product image -->
+          <figure class="figure" style="vertical-align: middle;">
+            <img alt="{{recipe.title}}" loading=lazy src="{{recipe.image}}" style="border-radius: 25px; height:150px; vertical-align:middle;" class="img-center img-fluid">
+          </figure>
+          <div class="card-body">
+            <!-- Price -->
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      <!--end of the cars-->
+    </div>
+    <div class="row">
+      <div class = "col-md-6 mb-5" style="width: 30%;">
+    {% if paged_recipes.has_other_pages %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center" >
+            {% if paged_recipes.has_previous %}
+            <li class="page-item">
+              <a href="?page={{ paged_recipes.previous_page_number}}" class="page-link">&laquo;</a>
+            </li>
+            {% else %}
+            <li class="page item disabled"></li>
+            <a class="page-link">&laquo;</a>
+            {% endif %}
+            {% for i in paged_recipes.paginator.page_range %}
+              {% if paged_recipes.number == i%}
+              <li class="page-item active"> 
+                <a class="page-link">{{i}}</a>
+              </li>
+              {% else %}
+              <li class="page-item"></li>
+              <a href="?page={{i}}" class="page-link">{{i}}</a>
+              {% endif %}
+    
+            {% endfor %}
+            {% if paged_recipes.has_next %}
+            <li class="page-item">
+              <a href="?page={{ paged_recipes.next_page_number}}" class="page-link">&raquo;</a>
+            </li>
+            {% else %}
+            <li class="page item disabled"></li>
+            <a class="page-link">&raquo;</a>
+            {% endif %}
+          </ul>
+          
+        </nav>
+    {% endif %}
+    </div>
+    </div>
+  </div>
+{% endblock %}

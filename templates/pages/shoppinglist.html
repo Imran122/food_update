@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{%block content %}
+
+
+
+
+<div class="card">
+	<div class="card-header">
+		<div class="d-flex justify-content-between align-items-center">
+			<div>
+				<h6 class="mb-0">Shopping List</h6>
+			
+
+	
+	
+			</div>
+			
+			<div class="text-right">
+				<div class="actions">
+					<div class="action-item">
+						<i id="search-icon" class="fas fa-search"></i>
+						<input id="user-input" placeholder="Search">
+					</div>
+					<a id="itemclear" class="action-item"><i class="fas fa-sync"></i></a>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+	<div id="replaceable-content">
+	{% include 'partials/_ingredient_results.html'%}
+	</div>
+</div>
+
+
+
+			
+
+
+
+
+
+
+{% block js %}
+
+<script src="{% static 'libs/dragula/dist/dragula.min.js' %}"></script>
+
+<script>
+	$(document).ready(function(){
+
+		$('#itemclear').click(function(){
+			var post_arr = [];
+	
+			// Get checked checkboxes
+			$('#checklist input[type=checkbox]').each(function() {
+				if (jQuery(this).is(":checked")) {
+					var id = this.id;
+					var splitid = id.split('_');
+					var postid = splitid[1];
+	
+					post_arr.push(postid);
+					
+				}
+			});
+	
+			if(post_arr.length > 0){
+					console.log(post_arr);
+					var isDelete = confirm("You sure have these?");
+					if (isDelete == true) {
+						 // AJAX Request
+						 $.ajax({
+							url:'{% url "pages:dismiss_item" %}',
+								type: 'POST',
+								data: { 
+									'post_id': JSON.stringify(post_arr),
+								},
+								headers: {'X-CSRFToken': '{{ csrf_token }}'},
+								
+								success: function(response){
+									 $.each(post_arr, function( i,l ){
+							
+											 $("#card"+l).remove();
+									 });
+								}
+						 });
+					} 
+			} 
+		});
+	 
+	});
+</script>
+<script>
+const user_input = $("#user-input")
+const search_icon = $('#search-icon')
+const list_div = $('#replaceable-content')
+const endpoint = '{% url "pages:shoppingList" shoppingList.id %}'
+const delay_by_in_ms = 700
+let scheduled_function = false
+
+let ajax_call = function (endpoint, request_parameters) {
+		$.getJSON(endpoint, request_parameters)
+				.done(response => {
+						// fade out the artists_div, then:
+						list_div.fadeTo('slow', 0).promise().then(() => {
+								// replace the HTML contents
+								list_div.html(response['html_from_view'])
+								// fade-in the div with new contents
+								list_div.fadeTo('slow', 1)
+								// stop animating search icon
+								search_icon.removeClass('blink')
+						})
+				})
+}
+
+
+user_input.on('keyup', function () {
+
+		const request_parameters = {
+				q: $(this).val() // value of user_input: the HTML element with ID user-input
+		}
+
+		// start animating the search icon with the CSS class
+		search_icon.addClass('blink')
+
+		// if scheduled_function is NOT false, cancel the execution of the function
+		if (scheduled_function) {
+				clearTimeout(scheduled_function)
+		}
+
+		// setTimeout returns the ID of the function to be executed
+		scheduled_function = setTimeout(ajax_call, delay_by_in_ms, endpoint, request_parameters)
+})
+
+
+
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+<!--
+<table> 
+	<tr>
+		<th> ID </th>
+		<th> Description</th>
+		<th>Recipe</th>
+		
+	</tr>
+	
+	{% for item in items %}
+	<tr>
+	<th> {{item.ingredient.id}} </th>
+	<th> {{item.ingredient.description}}</th>
+	<th>{{item.ingredient.recipe.title}}</th>
+
+	</tr>
+	{%endfor%}
+</table>
+-->
+
+

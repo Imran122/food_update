@@ -1,0 +1,213 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Page content -->
+<div class="page-content">
+  <!-- Page title -->
+  <div class="page-title">
+    <div class="row justify-content-between align-items-center">
+      <div
+        class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0"
+      >
+        <!-- Page title + Go Back button -->
+        <div class="d-inline-block">
+          <h5 class="h4 d-inline-block font-weight-400 mb-0 text-white">
+            Change Cards
+          </h5>
+        </div>
+        <!-- Additional info -->
+      </div>
+      <div
+        class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end"
+      ></div>
+    </div>
+  </div>
+  <!-- Nav -->
+  <ul class="nav nav-dark nav-tabs nav-overflow">
+    <li class="nav-item">
+      <a href="billing.html" class="nav-link active">
+        <i class="fas fa-credit-card mr-2"></i>Cards 
+      </a>
+    </li>
+
+  </ul>
+  <div class="row">
+    <div class="col-lg-4 order-lg-2">
+      <div class="card">
+        <div class="list-group list-group-flush">
+          <div class="list-group-item">
+            <div class="media">
+              <i class="fas fa-user"></i>
+              <div class="media-body ml-3">
+                <a href="#" class="stretched-link h6 mb-1">Settings</a>
+                <p class="mb-0 text-sm">
+                  Details about your personal information
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="media">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="media-body ml-3">
+                <a href="{% url 'change_card' %}" class="stretched-link h6 mb-1">Change Card</a>
+                <p class="mb-0 text-sm">Faster checkout and change card</p>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item active">
+            <div class="media">
+              <i class="fas fa-credit-card"></i>
+              <div class="media-body ml-3">
+                <a href="#" class="stretched-link h6 mb-1">Billing</a>
+                <p class="mb-0 text-sm">Speed up your shopping experience</p>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="media">
+              <i class="fas fa-file-invoice"></i>
+              <div class="media-body ml-3">
+                <a
+                  href="{% url 'account_history' %}"
+                  class="stretched-link h6 mb-1"
+                  >Payment history</a
+                >
+                <p class="mb-0 text-sm">See previous orders and invoices</p>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="media">
+              <i class="fas fa-bell"></i>
+              <div class="media-body ml-3">
+                <a href="#" class="stretched-link h6 mb-1">Notifications</a>
+                <p class="mb-0 text-sm">
+                  Choose what notification you will receive
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 order-lg-1">
+      <div class="card">
+        <div class="card-header">
+          <span class="h6">Summary</span>
+        </div>
+        <div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="row align-items-center">
+                <div class="col-sm-4">
+                  <small class="h6 text-sm mb-3 mb-sm-0">Plan</small>
+                </div>
+                <div class="col-sm-5">
+                  <strong>Free </strong> Cancel plan, unlimited public
+                  repositories.
+                </div>
+                <div class="col-sm-3 text-sm-right">
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0"
+                    >Cancel</a
+                  >
+                </div>
+              </div>
+            </li>
+
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-sm-4">
+                  <small class="h6 text-sm mb-3 mb-sm-0">Your balance</small>
+                </div>
+                <div class="col-sm-8">
+                  <p class="mb-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Attach a new card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-5 col-lg-8">
+              <span class="h6">Pay with card</span>
+              <p class="text-muted text-sm mt-2 mb-0 d-none d-lg-block">
+                Safe money transfer using your bank account. We support
+                Mastercard, Visa, Maestro and Skrill.
+              </p>
+            </div>
+            <div class="col-7 col-lg-4 text-right">
+              <img
+                alt="Image placeholder"
+                src="{% static 'img/icons/cards/mastercard.png' %}"
+                width="40"
+                class="mr-2"
+              />
+              <img
+                alt="Image placeholder"
+                src="{% static 'img/icons/cards/visa.png' %}"
+                width="40"
+                class="mr-2"
+              />
+              <img
+                alt="Image placeholder"
+                src="{% static 'img/icons/cards/skrill.png' %}"
+                width="40"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- form .....................form...........form......................... -->
+          <form method="post" action="#" id="payment-form">
+            {% csrf_token %}
+            <select
+              class="custom-select custom-select-sm"
+            
+            >
+              <option selected>Card Type</option>
+              <option value="MONTHLY">Debit Or Credit</option>
+              <option value="YEARLY">PayPal</option>
+            </select>
+            <br />
+            <br />
+            
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Card No">
+            </div>
+
+            <div id="paypal-button-container"></div>
+
+
+            <div class="text-right">
+              <button
+                type="submit"
+                class="btn btn-sm btn-primary rounded-pill"
+               
+              >
+                Change Card
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Add money using PayPal -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+

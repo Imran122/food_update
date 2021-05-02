@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+djangorestframework = "<3.10.0,>=3.9.0"
+flake8 = ">=3.6.0,<3.7.0"
+requests = "*"
+django-static-jquery = ">=2.1.4"
+python-memcached = "*"
+gunicorn = "==20.0.4"
+whitenoise = "==5.2.0"
+redis = "*"
+celery = {extras = ["redis"], version = "*"}
+celery-progress = "*"
+django-celery-results = "*"
+django-celery-beat = "*"
+django-bootstrap-modal-forms = "*"
+celery-once = "*"
+stripe = "==2.50.0"
+twilio = "*"
+Django = "<2.3.0,>=2.2.9"
+psycopg2-binary = "*"
+django-environ = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

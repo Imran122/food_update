@@ -1,0 +1,18 @@
+
+ 
+      <form action="{% url 'pages:mealplanView' %}" method="POST" id="generate-plan">
+        {%csrf_token%}
+        <label for="date"> Beggining Date</label>
+        <input class="form-control" type="date" id="startdate" name="startdate"><br>
+        <label for="enddate"> End Date</label>
+        <input class="form-control" type="date" id="enddate" name="enddate"><br>
+         
+        <br>
+        <button class="btn btn-primary" id="submit" type="submit">Submit form</button>
+    </form>
+    <br>
+
+    <div class="card-footer">
+      {% include 'generate/generate_progress.html' %}
+    </div>
+ 

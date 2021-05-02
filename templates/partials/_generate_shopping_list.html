@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Generate Shopping List</h5>
+        
+    </div>
+    <div class="card-body">
+
+        <form action="{% url 'pages:dashboard' %}" method="POST">
+
+            {%csrf_token%}
+            <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name"><br>
+            <label for="date"> Beggining Date</label>
+            <input class="form-control" type="date" id="date" name="date"><br>
+            <label for="enddate"> End Date</label>
+            <input class="form-control" type="date" id="enddate" name="enddate"><br>
+             
+            <br>
+            <button class="btn btn-primary" id="submit" type="submit">Submit form</button>
+        </form>
+        
+    </div>
+    <div class="card-footer">
+        <div class="row align-items-center">
+            <div class="col">
+
+                <span class="h6 mb-0 avatar-content">Incomplete Shopping Lists: </span>
+
+                <span class="h6 mb-0 avatar-content">Your Lists: </span>
+
+            </div>
+        </div>
+        
+        <ul class="list-group">
+            {% for list in shoppingLists%}
+            <a href='/shoppinglist/{{list.id}}'>
+            <li class="list-group-item">{{list.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    
+</div>

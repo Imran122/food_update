@@ -1,0 +1,55 @@
+<div id="meals">
+    <div class="list-group list-group-flush">
+  
+  
+        {% for meal in mealPlans %}
+        {% if meal.start == date %}
+       <div class="list-group-item list-group-item-action">
+       
+    <div class="media align-items-center">
+      <a href="/recipe/{{meal.mealChosen.id}}" target="_blank" rel="noopener noreferrer">
+      <div class="mr-3">
+          <img alt="{{meal.mealChosen.title}}" src="{{meal.mealChosen.image}}" loading=lazy class="avatar  rounded-circle">
+    
+      </div>
+    </a>
+    <a href="/recipe/{{meal.mealChosen.id}}" target="_blank" rel="noopener noreferrer">
+      <div class="media-body">
+          <h6 class="text-sm d-block text-limit mb-0">{{meal.mealChosen.title}} id={{meal.id}}</h6>
+          <span class="d-block text-sm text-muted"> {{meal.mealPosition}} - {{meal.mealChosen.percentCalories}}% - {{meal.mealChosen.cookingMins}} mins</span>
+      </div>
+    </a>
+      <div id="buttons-lock{{meal.id}}" class="media-body text-right lock-buttons">
+    
+        {% if meal.saved %}
+        <button type="button" data-id="{{meal.id}}" data-status="UNLOCK" class="btn btn-danger btn-sm lock">
+          Unlock
+        </button>
+      </div>
+      {%else%}
+        <button type="button" data-id="{{meal.id}}" data-status="LOCK" class="btn btn-success btn-sm lock">
+          Lock
+        </button>
+    
+    </div>
+    
+      {%endif %}
+      </div>
+    </div>
+    
+      </a>
+      
+      {%endif %}
+      {% endfor %} 
+     
+      
+      
+      
+     
+    </div>
+    </div>
+
+</div>
+
+
+</div>

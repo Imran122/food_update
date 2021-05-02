@@ -1,0 +1,71 @@
+<div class="row">
+          <div class="col-lg-4">
+            <div class="card card-stats h-100">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-muted mb-1">{{todayIntensity.date | date:"l"}}</h6>
+                    <span class="h5 font-weight-bold mb-0">{{todayIntensity.intensity}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon bg-gradient-warning text-white rounded-circle icon-shape">
+                        <strong>{{todayIntensity.intensity | slice:'1'}}</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                {% for meal in todayMeals%}
+                <li class="list-unstyled" style="text-decoration: none;"><a href="/recipe/{{meal.mealChosen.id}}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">{{meal.mealChosen.title}}</a></li>
+                {%endfor%}
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 ">
+            <div class="card card-stats h-100 ">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-muted mb-1">{{secondDayIntensity.date | date:"l"}}</h6>
+                    <span class="h5 font-weight-bold mb-0">{{secondDayIntensity.intensity}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon bg-gradient-warning text-white rounded-circle icon-shape">
+                        <strong>{{secondDayIntensity.intensity | slice:'1'}}</strong>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                {% for meal in secondDayMeals%}
+                <li class="list-unstyled" style="text-decoration: none;"><a href="/recipe/{{meal.mealChosen.id}}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">{{meal.mealChosen.title}}</a></li>
+                {%endfor%}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 ">
+            <div class="card card-stats h-100 ">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-muted mb-1">{{thirdDayIntensity.date | date:"l"}}</h6>
+                    <span class="h5 font-weight-bold mb-0">{{thirdDayIntensity.intensity}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon bg-gradient-warning text-white rounded-circle icon-shape">
+                        <strong>{{thirdDayIntensity.intensity | slice:'1'}}</strong>
+                    </div>
+                  </div>
+                </div>
+                {% for meal in thirdDayMeals%}
+                <li class="list-unstyled" style="text-decoration: none;"><a href="/recipe/{{meal.mealChosen.id}}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">{{meal.mealChosen.title}}</a></li>
+                {%endfor%}
+              </div>
+            </div>
+          </div>
+        </div>

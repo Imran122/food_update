@@ -1,0 +1,114 @@
+
+{% extends 'base.html' %}
+
+
+{% extends 'base.html' %}
+{%load static%}
+
+
+{%block head %}
+
+
+{%endblock%}
+
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">Generate Meal Plan</h5>
+        
+    </div>
+    <div class="card-body">
+        <form action="{% url 'plancreate' %}" method="POST">
+            {%csrf_token%}
+            <label for="date"> Beggining Date</label>
+            <input class="form-control" type="date" id="date" name="date"><br>
+            <label for="enddate"> End Date</label>
+            <input class="form-control" type="date" id="enddate" name="enddate"><br>
+             
+            <br>
+            <button class="btn btn-primary" id="submit" type="submit">Submit form</button>
+        </form>
+        
+    </div>
+
+
+    <div class="card-footer">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="h6 mb-0 avatar-content">Incomplete Shopping Lists: </span>
+            </div>
+        </div>
+        <ul class="list-group">
+            {% for list in shoppingLists%}
+            <li class="list-group-item">{{list.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    
+    
+</div>
+
+
+{%endblock%}
+
+<div class="container" style="padding-top: 20px;">
+	<form action="" method="post" style="display: inline;">
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="input-group mb-3" align="center" style="margin:0 auto;">
+			  {{ form.url }}
+			  <div class="input-group-append">
+				<button class="btn btn-primary" type="submit" style="width:120px;">
+					<strong>Download</strong>
+				</button>
+			  </div>
+			</div>
+		</div>
+		{{ form.errors }}
+	</form>
+</div>
+
+
+
+
+<div class='progress-wrapper'>
+    <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+  </div>
+  <div id="progress-bar-message">Waiting for progress to start...</div>
+  <div id="celery-result"></div>
+
+{%endblock%}
+
+{% block js %}
+<script type="text/javascript">
+    function processProgress(progressBarElement, progressBarMessageElement, progress) {
+        progressBarElement.style.width = progress.percent + "%";
+        var description = progress.description || "Starting download";
+        progressBarMessageElement.innerHTML = description;
+    }
+
+    function processResult(resultElement, result) {
+    if (result.includes("successful")) {
+        $( resultElement ).append(
+            $('<br>')
+        );
+        $( resultElement ).append(
+            $('<p class="text-center">').text(result)
+        );
+    }
+}
+
+
+    $(function () {
+        var progressUrl = "{% url 'celery_progress:task_status' 'task_id' %}"
+        var progressUrl = progressUrl.replace("task_id", response.task_id)
+        CeleryProgressBar.initProgressBar(progressUrl);
+      
+      });
+</script>
+
+{% endblock %}
+

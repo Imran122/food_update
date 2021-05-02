@@ -1,0 +1,216 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% block title %} {{recipe.title}} {%endblock%}
+<div class="page-content">
+    <!-- Page title -->
+    <div class="page-title">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
+          <!-- Page title + Go Back button -->
+          <div class="d-inline-block">
+            <h5 class="h4 d-inline-block font-weight-400 mb-0 text-white">Recipe</h5>
+          </div>
+          <!-- Additional info -->
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
+          <div class="btn-group">
+            <button type="button" id="fav-button" data-userinterest="{{userInterest.id}}" data-recipeid="{{recipe.id}}" data-favorite="Favorite" class="btn btn-sm btn-success">
+              Favorite
+            </button>
+            <button type="button" id="yuk-button" data-yukuserinterest="{{userInterest.id}}" data-yukrecipeid="{{recipe.id}}" data-favorite="Yuk" class="btn btn-sm btn-danger">
+              Yuck!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <!-- Product title -->
+            <h5 class="h4">{{recipe.title}}</h5>
+            <h6 class="text-sm">Source: <a href="http://{{recipe.source}}" target="_blank" rel="noopener noreferrer" > {{recipe.source}}</a></h6>
+            <!-- Rating -->
+            <div class="row align-items-center">
+              <div class="col-sm-6">
+                <span class="static-rating static-rating-sm d-block"><i class="star fas fa-star voted"></i>
+                  <i class="star fas fa-star voted"></i>
+                  <i class="star fas fa-star voted"></i>
+                  <i class="star fas fa-star voted"></i>
+                  <i class="star fas fa-star"></i></span>
+              </div>
+              <div class="col-sm-6 text-sm-right">
+                <ul class="list-inline mb-0">
+    
+                </ul>
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="py-4 my-4 border-top border-bottom">
+              
+              <dl class="row">
+                {% for ingredient in ingredients %}
+                <dd class="col-sm-9"><span class="text-sm">{{ingredient.description}}</span></dd>
+                {%endfor%}
+              </dl>
+            </div>
+            <h6 class="text-sm">Instructions:</h6>
+            <p class="text-sm mb-0">
+              {% for direction in directions %}
+                <b>{{ forloop.counter }}.</b> {{direction.description}} <br>
+                <br>
+              {%endfor%}  
+              </p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+              <img alt="{{recipe.title}}" src="{{recipe.image}}" loading=lazy class="img-fluid">
+        
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header border-0">
+            <h6 class="mb-0">Estimated Nutrition</h6>
+          </div>
+          <!-- Stocks table -->
+          <div class="table-responsive">
+            <table class="table align-items-center">
+              <thead>
+                <tr>
+                  <th scope="col" class="sort" data-sort="name">Nutrient</th>
+                  <th scope="col" class="sort" data-sort="status">Ammount</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-store mr-2"></i>
+                    <span class="name mb-0 text-sm">Carbohydrate </span>
+                  </th>
+                  <td class="stock">
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">{{carbs}}{{carbsUnit}}</span>
+                      
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-store mr-2"></i>
+                    <span class="name mb-0 text-sm">Protein</span>
+                   
+                  </th>
+                  <td class="stock">
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">{{protein}}{{proteinUnit}}</span>
+                      
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-store mr-2"></i>
+                    <span class="name mb-0 text-sm">Fat</span>
+                   
+                  </th>
+                  <td class="stock">
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">{{fat}}{{fatUnit}}</span>
+                      
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-store mr-2"></i>
+                    <span class="name mb-0 text-sm">Calories</span>
+                   
+                  </th>
+                  <td class="stock">
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">{{calories}}{{caloriesUnit}}</span>
+                      
+                    </div>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          {% include 'partials/_add_to_mealplan.html'%}
+        </div>
+        
+        <!-- Product images -->
+        
+        <!-- Stocks -->
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+{%block js %}
+
+<script>
+
+  $('#fav-button').click(function(){    
+    rid = $(this).data("recipeid");
+    iid = $(this).data("userinterest");
+    console.log('fid -> ' + iid)
+    $.ajax({
+      type: 'GET',
+      url: `{% url 'user_favorite' %}`,
+      data: {
+        recipe_id: rid,
+        interest_id: iid,
+      },
+      success: function(response) {
+                
+      },
+      error: function(response) {
+        
+      }
+    })
+  });
+ 
+
+</script>
+
+<script>
+
+  $('#yuk-button').click(function(){    
+    rid = $(this).data("yukrecipeid");
+    iid = $(this).data("yukuserinterest");
+    console.log('fid -> ' + iid)
+    $.ajax({
+      type: 'GET',
+      url: `{% url 'user_yuk' %}`,
+      data: {
+        recipe_id: rid,
+        interest_id: iid
+        
+      },
+      success: function(response) {
+        alert(response)
+      },
+      error: function(response) {
+        
+      }
+    })
+  });
+ 
+
+</script>
+
+
+{% endblock %}

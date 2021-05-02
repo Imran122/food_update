@@ -1,0 +1,622 @@
+Recipe URL fetch
+{
+   {
+   "vegetarian":false,
+   "vegan":false,
+   "glutenFree":false,
+   "dairyFree":false,
+   "veryHealthy":false,
+   "cheap":false,
+   "veryPopular":false,
+   "sustainable":false,
+   "weightWatcherSmartPoints":0,
+   "gaps":"no",
+   "lowFodmap":false,
+   "aggregateLikes":0,
+   "spoonacularScore":0.0,
+   "healthScore":0.0,
+   "pricePerServing":0.0,
+   "extendedIngredients":[
+      {
+         "id":20081,
+         "aisle":"Baking",
+         "image":"flour.png",
+         "consistency":"solid",
+         "name":"flour",
+         "original":"2 1/3 cup all-purpose flour,",
+         "originalString":"2 1/3 cup all-purpose flour,",
+         "originalName":"all-purpose flour",
+         "amount":2.3333333333333335,
+         "unit":"cup",
+         "meta":[
+            "all-purpose"
+         ],
+         "metaInformation":[
+            "all-purpose"
+         ],
+         "measures":{
+            "us":{
+               "amount":2.333,
+               "unitShort":"cups",
+               "unitLong":"cups"
+            },
+            "metric":{
+               "amount":552.039,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      },
+      {
+         "id":18369,
+         "aisle":"Baking",
+         "image":"white-powder.jpg",
+         "consistency":"solid",
+         "name":"baking powder",
+         "original":"2 teaspoons baking powder",
+         "originalString":"2 teaspoons baking powder",
+         "originalName":"baking powder",
+         "amount":2.0,
+         "unit":"teaspoons",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":2.0,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            },
+            "metric":{
+               "amount":2.0,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            }
+         }
+      },
+      {
+         "id":2047,
+         "aisle":"Spices and Seasonings",
+         "image":"salt.jpg",
+         "consistency":"solid",
+         "name":"salt",
+         "original":"1/4 teaspoon salt",
+         "originalString":"1/4 teaspoon salt",
+         "originalName":"salt",
+         "amount":0.25,
+         "unit":"teaspoon",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":0.25,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            },
+            "metric":{
+               "amount":0.25,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            }
+         }
+      },
+      {
+         "id":19335,
+         "aisle":"Baking",
+         "image":"sugar-in-bowl.png",
+         "consistency":"solid",
+         "name":"sugar",
+         "original":"1 1/2 cups sugar",
+         "originalString":"1 1/2 cups sugar",
+         "originalName":"sugar",
+         "amount":1.5,
+         "unit":"cups",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":1.5,
+               "unitShort":"cups",
+               "unitLong":"cups"
+            },
+            "metric":{
+               "amount":354.882,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      },
+      {
+         "id":19334,
+         "aisle":"Baking",
+         "image":"dark-brown-sugar.png",
+         "consistency":"solid",
+         "name":"brown sugar",
+         "original":"1/4 cup brown sugar",
+         "originalString":"1/4 cup brown sugar",
+         "originalName":"brown sugar",
+         "amount":0.25,
+         "unit":"cup",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":0.25,
+               "unitShort":"cups",
+               "unitLong":"cups"
+            },
+            "metric":{
+               "amount":59.147,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      },
+      {
+         "id":4513,
+         "aisle":"Oil, Vinegar, Salad Dressing",
+         "image":"vegetable-oil.jpg",
+         "consistency":"liquid",
+         "name":"vegetable oil",
+         "original":"3/4 cup vegetable oil",
+         "originalString":"3/4 cup vegetable oil",
+         "originalName":"vegetable oil",
+         "amount":0.75,
+         "unit":"cup",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":0.75,
+               "unitShort":"cups",
+               "unitLong":"cups"
+            },
+            "metric":{
+               "amount":177.441,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      },
+      {
+         "id":1123,
+         "aisle":"Milk, Eggs, Other Dairy",
+         "image":"egg.png",
+         "consistency":"solid",
+         "name":"eggs",
+         "original":"4 eggs",
+         "originalString":"4 eggs",
+         "originalName":"eggs",
+         "amount":4.0,
+         "unit":"",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":4.0,
+               "unitShort":"",
+               "unitLong":""
+            },
+            "metric":{
+               "amount":4.0,
+               "unitShort":"",
+               "unitLong":""
+            }
+         }
+      },
+      {
+         "id":2050,
+         "aisle":"Baking",
+         "image":"vanilla-extract.jpg",
+         "consistency":"liquid",
+         "name":"vanilla extract",
+         "original":"2 1/2 teaspoons vanilla extract",
+         "originalString":"2 1/2 teaspoons vanilla extract",
+         "originalName":"vanilla extract",
+         "amount":2.5,
+         "unit":"teaspoons",
+         "meta":[
+            
+         ],
+         "metaInformation":[
+            
+         ],
+         "measures":{
+            "us":{
+               "amount":2.5,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            },
+            "metric":{
+               "amount":2.5,
+               "unitShort":"tsps",
+               "unitLong":"teaspoons"
+            }
+         }
+      },
+      {
+         "id":19165,
+         "aisle":"Baking",
+         "image":"cocoa-powder.png",
+         "consistency":"solid",
+         "name":"cocoa powder",
+         "original":"1 cup good quality cocoa powder, sifted",
+         "originalString":"1 cup good quality cocoa powder, sifted",
+         "originalName":"good quality cocoa powder, sifted",
+         "amount":1.0,
+         "unit":"cup",
+         "meta":[
+            "sifted"
+         ],
+         "metaInformation":[
+            "sifted"
+         ],
+         "measures":{
+            "us":{
+               "amount":1.0,
+               "unitShort":"cup",
+               "unitLong":"cup"
+            },
+            "metric":{
+               "amount":236.588,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      },
+      {
+         "id":19336,
+         "aisle":"Baking",
+         "image":"powdered-sugar.jpg",
+         "consistency":"solid",
+         "name":"confectioners sugar",
+         "original":"1/2 cup confectioners sugar, for dusting",
+         "originalString":"1/2 cup confectioners sugar, for dusting",
+         "originalName":"confectioners sugar, for dusting",
+         "amount":0.5,
+         "unit":"cup",
+         "meta":[
+            "for dusting"
+         ],
+         "metaInformation":[
+            "for dusting"
+         ],
+         "measures":{
+            "us":{
+               "amount":0.5,
+               "unitShort":"cups",
+               "unitLong":"cups"
+            },
+            "metric":{
+               "amount":118.294,
+               "unitShort":"ml",
+               "unitLong":"milliliters"
+            }
+         }
+      }
+   ],
+   "id":-1,
+   "title":"Chocolate Crinkle Cookies",
+   "servings":30,
+   "sourceUrl":"https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies",
+   "image":"https://www.foodista.com/sites/default/files/styles/recype/public/DSC01604.jpg",
+   "imageType":"jpg",
+   "summary":null,
+   "cuisines":[
+      
+   ],
+   "dishTypes":[
+      
+   ],
+   "diets":[
+      
+   ],
+   "occasions":[
+      
+   ],
+   "instructions":"Preheat the oven to 350 degrees F. Like two baking sheets with parchment paper and set aside.\\nIn a small mixing bowl add the flour, baking powder and salt. Mix well and set aside.\\nIn the bowl of a kitchen mixer, such as a KitchenAid, fitted with a paddle attachment, add the sugar and oil and mix well.\\nAdd the eggs and vanilla extract and blend until well incorporated.\\nAdd the cocoa and the flour mixture and blend well.\\nPlace the confectioners sugar in a small shallow bowl and place by your work station.\\nUsing your hands, scoop out some dough and roll into a ball about an inch or so in diameter. (Feel free to make these are smaller or larger depending on your preference but note, the cooking time will change slightly). Roll the dough in the confectioners sugar and place on the prepared baking sheet. Bake for about 10 minutes and cookies are slightly puffed. Cool slightly and serve. Note: Because this is an oil-based cookie, the dough can get soft quickly, so be sure to refrigerate any dough you are not using right away.",
+   "analyzedInstructions":[
+      {
+         "name":"",
+         "steps":[
+            {
+               "number":1,
+               "step":"Preheat the oven to 350 degrees F. Like two baking sheets with parchment paper and set aside.",
+               "ingredients":[
+                  
+               ],
+               "equipment":[
+                  {
+                     "id":404770,
+                     "name":"baking paper",
+                     "localizedName":"baking paper",
+                     "image":"baking-paper.jpg"
+                  },
+                  {
+                     "id":404727,
+                     "name":"baking sheet",
+                     "localizedName":"baking sheet",
+                     "image":"baking-sheet.jpg"
+                  },
+                  {
+                     "id":404784,
+                     "name":"oven",
+                     "localizedName":"oven",
+                     "image":"oven.jpg",
+                     "temperature":{
+                        "number":350.0,
+                        "unit":"Fahrenheit"
+                     }
+                  }
+               ]
+            },
+            {
+               "number":2,
+               "step":"In a small mixing bowl add the flour, baking powder and salt.",
+               "ingredients":[
+                  {
+                     "id":18369,
+                     "name":"baking powder",
+                     "localizedName":"baking powder",
+                     "image":"white-powder.jpg"
+                  },
+                  {
+                     "id":20081,
+                     "name":"all purpose flour",
+                     "localizedName":"all purpose flour",
+                     "image":"flour.png"
+                  },
+                  {
+                     "id":2047,
+                     "name":"salt",
+                     "localizedName":"salt",
+                     "image":"salt.jpg"
+                  }
+               ],
+               "equipment":[
+                  {
+                     "id":405907,
+                     "name":"mixing bowl",
+                     "localizedName":"mixing bowl",
+                     "image":"mixing-bowl.jpg"
+                  }
+               ]
+            },
+            {
+               "number":3,
+               "step":"Mix well and set aside.",
+               "ingredients":[
+                  
+               ],
+               "equipment":[
+                  
+               ]
+            },
+            {
+               "number":4,
+               "step":"In the bowl of a kitchen mixer, such as a Kitchen",
+               "ingredients":[
+                  
+               ],
+               "equipment":[
+                  {
+                     "id":404726,
+                     "name":"blender",
+                     "localizedName":"blender",
+                     "image":"blender.png"
+                  },
+                  {
+                     "id":404783,
+                     "name":"bowl",
+                     "localizedName":"bowl",
+                     "image":"bowl.jpg"
+                  }
+               ]
+            },
+            {
+               "number":5,
+               "step":"Aid, fitted with a paddle attachment, add the sugar and oil and mix well.",
+               "ingredients":[
+                  {
+                     "id":19335,
+                     "name":"sugar",
+                     "localizedName":"sugar",
+                     "image":"sugar-in-bowl.png"
+                  },
+                  {
+                     "id":4582,
+                     "name":"cooking oil",
+                     "localizedName":"cooking oil",
+                     "image":"vegetable-oil.jpg"
+                  }
+               ],
+               "equipment":[
+                  
+               ]
+            },
+            {
+               "number":6,
+               "step":"Add the eggs and vanilla extract and blend until well incorporated.",
+               "ingredients":[
+                  {
+                     "id":2050,
+                     "name":"vanilla extract",
+                     "localizedName":"vanilla extract",
+                     "image":"vanilla-extract.jpg"
+                  },
+                  {
+                     "id":1123,
+                     "name":"egg",
+                     "localizedName":"egg",
+                     "image":"egg.png"
+                  }
+               ],
+               "equipment":[
+                  
+               ]
+            },
+            {
+               "number":7,
+               "step":"Add the cocoa and the flour mixture and blend well.",
+               "ingredients":[
+                  {
+                     "id":19165,
+                     "name":"cocoa powder",
+                     "localizedName":"cocoa powder",
+                     "image":"cocoa-powder.png"
+                  },
+                  {
+                     "id":20081,
+                     "name":"all purpose flour",
+                     "localizedName":"all purpose flour",
+                     "image":"flour.png"
+                  }
+               ],
+               "equipment":[
+                  
+               ]
+            },
+            {
+               "number":8,
+               "step":"Place the confectioners sugar in a small shallow bowl and place by your work station.",
+               "ingredients":[
+                  {
+                     "id":19336,
+                     "name":"powdered sugar",
+                     "localizedName":"powdered sugar",
+                     "image":"powdered-sugar.jpg"
+                  }
+               ],
+               "equipment":[
+                  {
+                     "id":404783,
+                     "name":"bowl",
+                     "localizedName":"bowl",
+                     "image":"bowl.jpg"
+                  }
+               ]
+            },
+            {
+               "number":9,
+               "step":"Using your hands, scoop out some dough and roll into a ball about an inch or so in diameter. (Feel free to make these are smaller or larger depending on your preference but note, the cooking time will change slightly).",
+               "ingredients":[
+                  {
+                     "id":0,
+                     "name":"dough",
+                     "localizedName":"dough",
+                     "image":"pizza-dough"
+                  },
+                  {
+                     "id":0,
+                     "name":"roll",
+                     "localizedName":"roll",
+                     "image":"dinner-yeast-rolls.jpg"
+                  }
+               ],
+               "equipment":[
+                  
+               ]
+            },
+            {
+               "number":10,
+               "step":"Roll the dough in the confectioners sugar and place on the prepared baking sheet.",
+               "ingredients":[
+                  {
+                     "id":19336,
+                     "name":"powdered sugar",
+                     "localizedName":"powdered sugar",
+                     "image":"powdered-sugar.jpg"
+                  },
+                  {
+                     "id":0,
+                     "name":"dough",
+                     "localizedName":"dough",
+                     "image":"pizza-dough"
+                  },
+                  {
+                     "id":0,
+                     "name":"roll",
+                     "localizedName":"roll",
+                     "image":"dinner-yeast-rolls.jpg"
+                  }
+               ],
+               "equipment":[
+                  {
+                     "id":404727,
+                     "name":"baking sheet",
+                     "localizedName":"baking sheet",
+                     "image":"baking-sheet.jpg"
+                  }
+               ]
+            },
+            {
+               "number":11,
+               "step":"Bake for about 10 minutes and cookies are slightly puffed. Cool slightly and serve. Note: Because this is an oil-based cookie, the dough can get soft quickly, so be sure to refrigerate any dough you are not using right away.",
+               "ingredients":[
+                  {
+                     "id":10118192,
+                     "name":"cookies",
+                     "localizedName":"cookies",
+                     "image":"shortbread-cookies.jpg"
+                  },
+                  {
+                     "id":0,
+                     "name":"dough",
+                     "localizedName":"dough",
+                     "image":"pizza-dough"
+                  },
+                  {
+                     "id":4582,
+                     "name":"cooking oil",
+                     "localizedName":"cooking oil",
+                     "image":"vegetable-oil.jpg"
+                  }
+               ],
+               "equipment":[
+                  {
+                     "id":404784,
+                     "name":"oven",
+                     "localizedName":"oven",
+                     "image":"oven.jpg"
+                  }
+               ],
+               "length":{
+                  "number":10,
+                  "unit":"minutes"
+               }
+            }
+         ]
+      }
+   ],
+   "sourceName":null,
+   "creditsText":null,
+   "originalId":null,
+   "spoonacularSourceUrl":""
+}
+
+Meal Plan fetch 
+
+

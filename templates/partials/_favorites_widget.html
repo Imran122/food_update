@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h6 class="mb-0">Want Something Different?</h6>
+        </div>
+        <div class="text-right">
+            
+        </div>
+    </div>
+</div>
+
+    <div class="list-group list-group-flush">
+    {% for favorite in favorites%}
+    
+    
+    
+    
+    
+    <div class="list-group-item">
+        
+<div class="media align-items-center">
+    <div class="mr-3">
+        <img alt="{{favorite.recipe.title}}" src="{{favorite.recipe.image}}" class="avatar  rounded-circle">
+
+    </div>
+    <div class="media-body text-limit">
+        <h6 class="text-sm d-block text-limit mb-0"></h6>
+        <span class="d-block text-sm text-muted">{{favorite.recipe.title}}</span>
+    </div>
+    <div class="media-body text-right">
+        <button onclick="location.href='/recipe/{{favorite.recipe.id}}'" type="button" class="btn btn-sm btn-secondary">View</button>
+    </div>
+</div>
+
+
+    </div>
+    
+    
+    
+    {% endfor %}
+</div>
+
+
+</div>

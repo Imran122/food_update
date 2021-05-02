@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{%block head %}
+<style>
+    .calendar {
+        width: 98%;
+        margin: auto;
+        font-size: 13px;
+        display: inline-block;
+      }
+      
+      .calendar tr, .calendar td {
+        border: 0px solid black;
+      }
+      
+      .calendar th {
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+      }
+      
+      .calendar td {
+        width: 200px;
+        height: 150px;
+        padding: 20px 0px 0px 5px;
+      }
+      
+      .month {
+        font-size: 25px;
+      }
+      
+      .date {
+        font-size: 16px;
+      }
+      
+      ul {
+        height: 100%;
+        padding: 0px 5px 0px 20px;
+      }
+      
+      
+      .left {
+        float: left;
+      }
+      
+      .right {
+        float: right;
+      }
+      
+    
+      
+      .clearfix {
+        margin: 15px;
+      }
+</style>
+{%endblock%}
+
+
+{% block content %}
+<div class=card>
+    <div class="card-header">
+</div>
+
+<div class="clearfix">
+	<a class="btn btn-primary left"  href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
+	<a class="btn btn-primary right" style="margin: 0%;" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
+	<button class="btn btn-primary right" style="margin-right: 2%;" data-toggle="modal" data-target="#addintensity1"> New Event </button>
+</div>
+{{ calendar }}
+</table>
+</div>
+
+
+<!-- Add Intensity Modal-->
+<div class="modal fade" id="addintensity1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form method="post" action="{% url 'cal:event_new' %}">
+                {% csrf_token %}
+                <table class="form form-table">
+                  {{ form }}
+                  <tr><td colspan="2"></td></tr>
+                </table>
+             
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info right"> Submit </button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="eventEditModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <form class="form" method="post" id="edit_product_form" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProductModalFormLabel">Edit Day</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                {% csrf_token %}
+                <div id='showForm'></div>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" value="Submit!">
+            </div>
+          </div>
+    </form>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function (){
+        $('.edit').click(function(){
+            id = $(this).data('id')
+            $('#eventEditModal').modal('show');
+            $.ajax({
+                type: 'GET',
+                url: '/cal/event/edit/'+id,
+                success: function(res) {
+                $("#showForm").html(res);
+                $("#edit_product_form").attr('action', '/cal/event/edit/'+id +'/')
+            }
+            })
+        });
+        
+        }
+    )
+</script>
+
+{%endblock%}

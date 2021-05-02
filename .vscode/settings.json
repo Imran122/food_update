@@ -1,0 +1,8 @@
+{
+<<<<<<< HEAD
+    "python.pythonPath": "/usr/bin/python",
+=======
+    "python.pythonPath": "/usr/local/bin/python3",
+>>>>>>> b45cbd050d16546b8ffbd9580b8a78794c217264
+    "git.ignoreLimitWarning": true
+}

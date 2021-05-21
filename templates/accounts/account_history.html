@@ -136,23 +136,26 @@
                       <th scope="col">Status</th>
                       <th scope="col">Date</th>
                       <th scope="col">Order</th>
-                      <th scope="col">Used card</th>
+                      <th scope="col">Payment method</th>
                       <th scope="col">Amount</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+                    {% if history %}
+                    {% for hist in history %}
                     <tr>
                       <th scope="row">
                         <span class="badge badge-pill badge-soft-success">Paid</span>
                       </th>
                       <td>
                         <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
+                        <span class="h6 text-sm">{{hist.date}}</span>
                       </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
+                      <td>#{{hist.order}}</td>
+                      <td><i class="fas fa-credit-card mr-2"></i>{{hist.payment_method}}</td>
+                      <td>{{hist.amount}} USD</td>
+                      <!--
                       <td class="text-right">
                         <div class="actions">
                           <div class="dropdown">
@@ -164,176 +167,15 @@
                             </div>
                           </div>
                         </div>
-                      </td>
+                      </td> -->
                     </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-danger">Unpaid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-success">Paid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-warning">Error</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-success">Paid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-success">Paid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-danger">Unpaid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-pill badge-soft-success">Paid</span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                    {% endfor %}
+
+                    {% else %}
+                    <h2 class="text-danger text-center mt-4">No Payment history available</h2>
+                    {% endif %}
+                    
+
                   </tbody>
                 </table>
               </div>

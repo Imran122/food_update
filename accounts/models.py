@@ -24,12 +24,25 @@ SUBSCRIPTION =(
       ('M', 'MONTHLY'),
       ('Y', 'YEARLY'),
 )
+
+PAYMENT_TYPE =(
+      ('P', 'PAYPAL'),
+      ('S', 'STRIPE'),
+      ('F','NO PAYMENT')
+      
+)
+
 class UserProfile(models.Model):
       user = models.OneToOneField(User,on_delete=models.CASCADE)
       #photo = models.ImageField(upload_to='photos/%Y/%m/%d',null=True,blank=True,default="../static/img/theme/light/team-1-800x800.jpg")
       expire_date = models.DateTimeField(null=True,blank=True)
-      subscription_type= models.CharField(max_length=100,choices=SUBSCRIPTION,default="FREE")
+      subscription_type= models.CharField(max_length=100,choices=SUBSCRIPTION,default="F")
+      payment_type = models.CharField(max_length=20,choices=PAYMENT_TYPE,null=True)
+      customer_id = models.CharField(max_length=50,null=True)
+      payment_id = models.CharField(max_length=100, null=True)
+      customer_email = models.CharField(max_length=100,null=True)
       is_pro = models.BooleanField(default=False)
+
       def __str__(self):
             return self.user.email
 
@@ -38,7 +51,12 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance,expire_date=datetime.now()+timedelta(days=30))
+
+      try:
+            UserProfile.objects.get(user=instance)
+            pass
+      except UserProfile.DoesNotExist:
+            UserProfile.objects.create(user=instance,expire_date=datetime.now()+timedelta(days=30))
     
 
 
@@ -51,3 +69,14 @@ class PremiumUser(models.Model):
       create_date = models.DateTimeField(auto_now=True)
       def __str__(self):
             return self.subscriber_user.username
+
+
+class payment_history(models.Model):
+      user = models.CharField(max_length=50,null=True)
+      date = models.DateField(auto_now_add=True)
+      order = models.CharField(max_length=40,null=True)
+      payment_method = models.CharField(max_length=40,null=True)
+      amount = models.FloatField(null=True)
+
+      def __str__(self):
+            return str(self.user)

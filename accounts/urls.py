@@ -12,6 +12,10 @@ urlpatterns = [
     path('paypal-payment-success/',views.paypal_payment_success,name='paypal_payment_success'),
     path('logout/',views.logout,name='logout'),
     path('account_history/', views2.account_history, name='account_history'),
-    path('change_card/', views2.change_card, name='change_card'),    
+    path('change_card/', views2.change_card, name='change_card'), 
+    path('stripe_charge/',views.stripe_charge,name='stripe_charge'),
+    path('cancel_subscription/',views.cancel_subscription,name='cancel_subscription'),
+    path('stripe_webhook/',views.stripe_webhook,name = 'stripe_webhook'),
+    path('paypal_webhook/',views.paypal_webhook,name='paypal_webhook') 
 
 ]

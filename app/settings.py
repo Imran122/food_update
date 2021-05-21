@@ -17,7 +17,7 @@ from celery.schedules import crontab
 import sys
 import environ
 
-env = environ.Env()
+#env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,12 +27,16 @@ STATIC_DIR = os.path.join(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY')
+#SECRET_KEY = env.str('SECRET_KEY')
+
+SECRET_KEY="SJKFLSKFJSKFJKJ453405U3409SAFKFSDF"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
-
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
+#DEBUG = env.bool("DEBUG", default=True)
+DEBUG = True
+#ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -103,9 +107,18 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-
+'''
 DATABASES = {
     'default': {**env.db(), **{'ENGINE': 'django.db.backends.postgresql'}}
+}
+
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
 }
 
 AUTH_USER_MODEL = 'users.User'
